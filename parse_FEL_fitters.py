@@ -31,8 +31,7 @@ def read_json(filename, clade, gene):
     with open(filename, "r") as fh:
         json_data = json.load(fh)
     #end with
-    
-    wrote_columns = False
+
     
     MLE_Content =  json_data["MLE"]["content"]["0"]
     
@@ -76,6 +75,8 @@ print()
 print("# Found", str(len(files)), "files..")
 print()
 
+CLADES = []
+
 #Make sure these are upper case
 genes_dict = ["ATP6","ATP8", "COX1", "COX2", "COX3", "ND1", "ND2", "ND3", "ND5", "ND6", "CYTB", "ND4L"]
 
@@ -84,6 +85,7 @@ columns = ["Clade", "Gene", "Site_Number", "Alpha"]
 
 
 for gene in genes_dict:
+    wrote_columns = False
     
     # Create empty output file (csv)
     file_output = "mtdna_" + gene + "_alphas.csv"
